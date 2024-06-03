@@ -28,7 +28,7 @@ func main() {
 	  * Create an asynchronous, non-blocking write client.
 	  * Provide your InfluxDB org and bucket as arguments
 	**/
-	writeAPI := client.WriteAPI("a56f745d70b85346", "test")
+	writeAPI := client.WriteAPI("a56f745d70b85346", "test") // choix du buckets
 
 	// Get the errors channel for the asynchronous write client.
 	errorsCh := writeAPI.Errors()
@@ -41,11 +41,11 @@ func main() {
 		AddField("temperature", 22).
 		SetTime(time.Now())*/
       //  Habitation
-    p := influxdb2.NewPointWithMeasurement("Habitation").
-		AddField("intrusion", 0).
+    p := influxdb2.NewPointWithMeasurement("Habitation"). // choix de la mesure appelé "measurement"
+		AddField("intrusion", 0). // choix des champs ainsi que de la valeur de chaque champs
 		AddField("temperature", 25).
 		AddField("luminosite", 2000).
-		SetTime(time.Now())
+		SetTime(time.Now()) // choix de l'horodatage que de la mesure
 
 	// Define a proc for handling errors.
 	go func() {
