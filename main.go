@@ -36,17 +36,18 @@ func main() {
 	/** Create a point.
 	  * Provide measurement, tags, and fields as arguments.
 	**/ //  Air
-	/*p := influxdb2.NewPointWithMeasurement("Air").
-		AddField("humidity", 80).
+	currentTime := time.Now()
+	p := influxdb2.NewPointWithMeasurement("Air").
+		AddField("humidity", 100).
 		AddField("temperature", 22).
-		SetTime(time.Now())*/
+		SetTime(time.Date(2024, time.June, 2, 15, 30, 0, 0, currentTime.Location()))
       //  Habitation
-    p := influxdb2.NewPointWithMeasurement("Habitation"). // choix de la mesure appelé "measurement"
+    /*p := influxdb2.NewPointWithMeasurement("Habitation"). // choix de la mesure appelé "measurement"
 		AddField("intrusion", 0). // choix des champs ainsi que de la valeur de chaque champs
 		AddField("temperature", 25).
-		AddField("luminosite", 2000).
+		AddField("luminosite", 1800).
 		SetTime(time.Now()) // choix de l'horodatage que de la mesure
-
+*/
 	// Define a proc for handling errors.
 	go func() {
 		for err := range errorsCh {
